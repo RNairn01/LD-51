@@ -4,6 +4,7 @@ var tile_size = 32
 var target_position = null
 
 onready var timer = get_node("/root/Node2D/GlobalTimer")
+onready var arrow_place_manager = get_node("/root/Node2D/ArrowPlaceManager")
 onready var tween = $Tween
 onready var sprite = $SnailSprite
 
@@ -18,6 +19,8 @@ func _ready():
 	timer.connect("timeout", self, "_on_tick")
 	# This could be done in the editor but I think it's more descriptive in code.
 	self.connect("area_entered", self, "_on_collide")
+	self.connect("mouse_entered", arrow_place_manager, "_mouse_enter_unplacable_area")
+	self.connect("mouse_exited", arrow_place_manager, "_mouse_leave_unplacable_area")
 
 func _on_tick():
 	var move_target = position + snail_speed * snail_direction * tile_size

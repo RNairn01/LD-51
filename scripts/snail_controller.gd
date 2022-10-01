@@ -22,6 +22,9 @@ func _on_tick():
 func _on_collide(area: Area2D):
 	if area.name != "GridArea":
 		print("collide" + "-" + area.name)
+	
+	if area.name.begins_with("@Arrow"):
+		self.snail_direction = area.arrow_direction
 
 func set_sprite_facing(direction: Vector2):
 	match (direction):

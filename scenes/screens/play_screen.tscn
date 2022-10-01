@@ -17,7 +17,6 @@
 [ext_resource path="res://scenes/snails/snail_rebel.tscn" type="PackedScene" id=15]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 7, 11 )
 
 [node name="UI" type="Control" parent="."]
 margin_left = -32.0

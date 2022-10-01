@@ -9,7 +9,7 @@ func _ready():
 
 func _on_click_in_grid(viewport: Node, event: InputEventMouseButton, shape_idx: int):
 	if Input.is_action_just_pressed("left_click"):
-		var grid_pos = get_nearest_grid_center(get_global_mouse_position())
+		var grid_pos = get_nearest_grid_center(get_global_mouse_position() )
 		emit_signal("click_in_grid", grid_pos)
 
 func get_nearest_grid_center(mouse_position: Vector2):

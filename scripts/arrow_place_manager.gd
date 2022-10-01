@@ -17,8 +17,9 @@ func _ready():
 	pass
 
 func _place_arrow(grid_position: Vector2):
-	current_grid_position = grid_position
 	if can_place:
+		can_place = false
+		current_grid_position = grid_position
 		update_mouse_direction = true
 		print("Place arrow at - " + str(grid_position))
 
@@ -31,10 +32,12 @@ func _process(_delta):
 		update_arrow_instance(current_mouse_direction)
 		if Input.is_action_just_released("left_click") and arrow_instance.get_parent() == null:
 			print("release")
+			arrow_instance.position = current_grid_position
 			update_mouse_direction = false
 			placement_guide.visible = false
 			add_child(arrow_instance)
 			update_arrow_instance(current_mouse_direction)
+			can_place = true
 
 		
 func get_mouse_direction(grid_pos, mouse_pos):
@@ -67,11 +70,15 @@ func update_arrow_instance(direction):
 		Vector2.RIGHT:
 			arrow_instance = arrow_right.instance()
 		
-	if not arrow_instance.is_queued_for_deletion() and is_instance_valid(arrow_instance):
-		arrow_instance.position = current_grid_position
+	# if is_instance_valid(arrow_instance) and not arrow_instance.is_queued_for_deletion():
+	# 	arrow_instance.position = current_grid_position
 
 func _mouse_enter_unplacable_area():
 	can_place = false
 
 func _mouse_leave_unplacable_area():
 	can_place = true
+
+func _enter_area(area: Area2D):
+	if area.name.find("Arrow") != -1:
+		area.queue_free()

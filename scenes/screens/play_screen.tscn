@@ -24,6 +24,9 @@ margin_top = -32.0
 margin_right = 2144.0
 margin_bottom = 1184.0
 mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TimerLabel" type="Label" parent="UI"]
 margin_left = 1216.0

@@ -29,7 +29,8 @@ func _process(_delta):
 		placement_guide.position = current_grid_position + Vector2(16,16)
 		update_placement_guide(current_mouse_direction)
 		update_arrow_instance(current_mouse_direction)
-		if Input.is_action_just_released("left_click"):
+		if Input.is_action_just_released("left_click") and arrow_instance.get_parent() == null:
+			print("release")
 			update_mouse_direction = false
 			placement_guide.visible = false
 			add_child(arrow_instance)
@@ -66,7 +67,8 @@ func update_arrow_instance(direction):
 		Vector2.RIGHT:
 			arrow_instance = arrow_right.instance()
 		
-	arrow_instance.position = current_grid_position
+	if not arrow_instance.is_queued_for_deletion() and is_instance_valid(arrow_instance):
+		arrow_instance.position = current_grid_position
 
 func _mouse_enter_unplacable_area():
 	can_place = false

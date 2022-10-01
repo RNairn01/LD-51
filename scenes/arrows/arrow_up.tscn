@@ -13,6 +13,7 @@ arrow_direction = Vector2( 0, -1 )
 position = Vector2( 16, 16 )
 rotation = 3.14159
 texture = ExtResource( 1 )
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 16 )

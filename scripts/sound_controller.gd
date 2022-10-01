@@ -18,13 +18,13 @@ onready var sounds_by_key = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	changeSound("normal_theme")
-	
-
 
 func changeSound(new_sound: String):
 	print("Playing " + new_sound)
 	if currently_playing != null:
 		sounds_by_key[currently_playing].stop()
+	elif currently_playing == new_sound:
+		return
 	currently_playing = new_sound
 	var sound = sounds_by_key[new_sound]
 	sound.play()

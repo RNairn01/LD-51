@@ -45,7 +45,7 @@ position = Vector2( 1.51894, -192 )
 scale = Vector2( 0.922929, 1.08439 )
 texture = ExtResource( 18 )
 
-[node name="Label" type="Label" parent="UI/SidePanel/NextSnailDisplay"]
+[node name="NextSnailLabel" type="Label" parent="UI/SidePanel/NextSnailDisplay"]
 margin_left = -106.156
 margin_top = 128.183
 margin_right = 106.844

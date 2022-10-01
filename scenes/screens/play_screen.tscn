@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/snails/snail_normal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/arrow_place_manager.tscn" type="PackedScene" id=2]
@@ -19,6 +19,39 @@
 [ext_resource path="res://assets/sprites/mr_snailsworth.png" type="Texture" id=17]
 [ext_resource path="res://assets/sprites/next_snail_display.png" type="Texture" id=18]
 [ext_resource path="res://assets/fonts/ui_font_medium.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/sprites/snails/normal_snail.png" type="Texture" id=20]
+[ext_resource path="res://scripts/next_snail_display.gd" type="Script" id=21]
+[ext_resource path="res://scripts/snail_order_manager.gd" type="Script" id=22]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("NextSnailSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_out_and_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("NextSnailSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -44,6 +77,7 @@ texture = ExtResource( 16 )
 position = Vector2( 1.51894, -192 )
 scale = Vector2( 0.922929, 1.08439 )
 texture = ExtResource( 18 )
+script = ExtResource( 21 )
 
 [node name="NextSnailLabel" type="Label" parent="UI/SidePanel/NextSnailDisplay"]
 margin_left = -106.156
@@ -55,10 +89,29 @@ text = "Next Snail"
 align = 1
 valign = 1
 
+[node name="NextSnailSprite" type="Sprite" parent="UI/SidePanel/NextSnailDisplay"]
+position = Vector2( -0.00012207, -3.05176e-05 )
+scale = Vector2( 5.76042, 5.53307 )
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/SidePanel/NextSnailDisplay"]
+anims/RESET = SubResource( 1 )
+anims/fade_out_and_in = SubResource( 2 )
+
 [node name="MrSnailsworth" type="Sprite" parent="UI/SidePanel"]
 position = Vector2( 0.379761, 399 )
 scale = Vector2( 2.27848, 3 )
 texture = ExtResource( 17 )
+
+[node name="LivesLabel" type="Label" parent="UI/SidePanel"]
+margin_left = -104.051
+margin_top = -480.0
+margin_right = 108.949
+margin_bottom = -432.0
+custom_fonts/font = ExtResource( 19 )
+text = "Lives"
+align = 1
+valign = 1
 
 [node name="TimerLabel" type="Label" parent="UI/SidePanel"]
 margin_left = -130.633
@@ -70,6 +123,9 @@ text = "10"
 align = 1
 valign = 1
 script = ExtResource( 6 )
+
+[node name="SnailOrderManager" type="Node2D" parent="."]
+script = ExtResource( 22 )
 
 [node name="GridClickManager" parent="." instance=ExtResource( 3 )]
 

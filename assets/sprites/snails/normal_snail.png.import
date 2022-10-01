@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rebel_snail.png-6bbb8301fc8e542b024bf6f0b243896f.stex"
+path="res://.import/normal_snail.png-b252157b85ca13126f24ef6a57eb1091.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rebel_snail.png"
-dest_files=[ "res://.import/rebel_snail.png-6bbb8301fc8e542b024bf6f0b243896f.stex" ]
+source_file="res://assets/sprites/snails/normal_snail.png"
+dest_files=[ "res://.import/normal_snail.png-b252157b85ca13126f24ef6a57eb1091.stex" ]
 
 [params]
 

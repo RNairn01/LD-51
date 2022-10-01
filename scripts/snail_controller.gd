@@ -1,13 +1,18 @@
 extends Area2D
 
 var tile_size = 32
+var target_position = null
+
 onready var timer = get_node("/root/Node2D/GlobalTimer")
 onready var tween = $Tween
 onready var sprite = $SnailSprite
+
 export var tween_speed = 3
 export var snail_speed = 1
 export var snail_size = 1
 export var snail_direction: Vector2 = Vector2.RIGHT
+
+
 
 func _ready():
 	timer.connect("timeout", self, "_on_tick")
@@ -27,6 +32,10 @@ func _on_collide(area: Area2D):
 		area.queue_free()
 	elif area.name.find("Snail") != -1:
 		print(self.name + " - collision with - " + area.name)
+		if(self.name < area.name): # Only spawn one explosion
+			var explosion = load("res://scenes/explosion.tscn").instance()
+			explosion.set_position(self.target_position) # Set the explosion in the square we were moving into
+			get_node("/root/Node2D").add_child(explosion)
 		area.queue_free()
 		self.queue_free()
 
@@ -49,6 +58,7 @@ func set_sprite_facing(direction: Vector2):
 
 
 func move_tween(target):
+	self.target_position = target
 	tween.interpolate_property(self, "position",
 		position, target,
 		1.0/tween_speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)

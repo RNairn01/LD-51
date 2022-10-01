@@ -40,6 +40,10 @@ script = ExtResource( 6 )
 [node name="GlobalTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="HalfTickTimer" type="Timer" parent="GlobalTimer"]
+wait_time = 0.5
+autostart = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 1056, 576 )
 current = true

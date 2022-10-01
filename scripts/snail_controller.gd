@@ -25,6 +25,7 @@ func _on_collide(area: Area2D):
 	
 	if area.name.find("Arrow") != -1:
 		self.snail_direction = area.arrow_direction
+		area.queue_free()
 
 func set_sprite_facing(direction: Vector2):
 	match (direction):

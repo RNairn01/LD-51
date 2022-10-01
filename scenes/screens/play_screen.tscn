@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/snails/snail_normal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/arrow_place_manager.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://scenes/snails/snail_rebel.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/sprites/side_panel.png" type="Texture" id=16]
 [ext_resource path="res://assets/sprites/mr_snailsworth.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/next_snail_display.png" type="Texture" id=18]
+[ext_resource path="res://assets/fonts/ui_font_medium.tres" type="DynamicFont" id=19]
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -38,16 +40,31 @@ position = Vector2( 1449, 608 )
 scale = Vector2( 1.31667, 1 )
 texture = ExtResource( 16 )
 
+[node name="NextSnailDisplay" type="Sprite" parent="UI/SidePanel"]
+position = Vector2( 1.51894, -192 )
+scale = Vector2( 0.922929, 1.08439 )
+texture = ExtResource( 18 )
+
+[node name="Label" type="Label" parent="UI/SidePanel/NextSnailDisplay"]
+margin_left = -106.156
+margin_top = 128.183
+margin_right = 106.844
+margin_bottom = 176.183
+custom_fonts/font = ExtResource( 19 )
+text = "Next Snail"
+align = 1
+valign = 1
+
 [node name="MrSnailsworth" type="Sprite" parent="UI/SidePanel"]
 position = Vector2( 0.379761, 399 )
 scale = Vector2( 2.27848, 3 )
 texture = ExtResource( 17 )
 
 [node name="TimerLabel" type="Label" parent="UI/SidePanel"]
-margin_left = -131.013
-margin_top = -576.0
-margin_right = 124.987
-margin_bottom = -416.0
+margin_left = -130.633
+margin_top = -588.0
+margin_right = 125.367
+margin_bottom = -491.0
 custom_fonts/font = ExtResource( 11 )
 text = "10"
 align = 1

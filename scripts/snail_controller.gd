@@ -15,13 +15,13 @@ func _ready():
 	self.connect("area_entered", self, "_on_collide")
 
 func _on_tick():
-	print("tick")
 	var move_target = position + snail_speed * snail_direction * tile_size
 	set_sprite_facing(snail_direction)
 	move_tween(move_target)
 
 func _on_collide(area: Area2D):
-	print("collide" + "-" + area.name)
+	if area.name != "GridArea":
+		print("collide" + "-" + area.name)
 
 func set_sprite_facing(direction: Vector2):
 	match (direction):

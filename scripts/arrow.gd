@@ -19,4 +19,6 @@ func _enter_area(area: Area2D):
 	if area.name.find("Arrow") != -1:
 		if area.time_created < self.time_created:
 			self.queue_free()
+	elif area.name.find("Wall") != -1:
+		self.queue_free()
 		

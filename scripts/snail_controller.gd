@@ -20,12 +20,15 @@ func _on_tick():
 	move_tween(move_target)
 
 func _on_collide(area: Area2D):
-	if area.name != "GridArea":
-		print("collide" + "-" + area.name)
-	
+	# if area.name != "GridArea":
+	# 	print("collide" + "-" + area.name)
 	if area.name.find("Arrow") != -1:
 		self.snail_direction = area.arrow_direction
 		area.queue_free()
+	elif area.name.find("Snail") != -1:
+		print(self.name + " - collision with - " + area.name)
+		area.queue_free()
+		self.queue_free()
 
 func set_sprite_facing(direction: Vector2):
 	match (direction):

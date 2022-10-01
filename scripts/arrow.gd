@@ -13,6 +13,7 @@ func _ready():
 
 func _on_click(_viewport:Node, _event:InputEvent, _shape_idx:int):
 	if Input.is_action_just_pressed("right_click"):
+		arrow_place_manager.can_place = true
 		self.queue_free()
 
 func _enter_area(area: Area2D):

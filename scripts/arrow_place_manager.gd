@@ -10,6 +10,7 @@ var update_mouse_direction = false
 var current_grid_position = Vector2(0,0)
 var current_mouse_direction = Vector2(0,0)
 var arrow_instance = arrow_down.instance()
+var can_place = true
 
 func _ready():
 	grid_manager.connect("click_in_grid", self, "_place_arrow")
@@ -17,8 +18,9 @@ func _ready():
 
 func _place_arrow(grid_position: Vector2):
 	current_grid_position = grid_position
-	update_mouse_direction = true
-	print("Place arrow at - " + str(grid_position))
+	if can_place:
+		update_mouse_direction = true
+		print("Place arrow at - " + str(grid_position))
 
 func _process(_delta):
 	if update_mouse_direction:
@@ -65,3 +67,9 @@ func update_arrow_instance(direction):
 			arrow_instance = arrow_right.instance()
 		
 	arrow_instance.position = current_grid_position
+
+func _mouse_enter_unplacable_area():
+	can_place = false
+
+func _mouse_leave_unplacable_area():
+	can_place = true

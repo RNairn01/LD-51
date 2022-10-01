@@ -23,15 +23,19 @@ func _on_collide(area: Area2D):
 	if area.name != "GridArea":
 		print("collide" + "-" + area.name)
 	
-	if area.name.begins_with("@Arrow"):
+	if area.name.find("Arrow") != -1:
 		self.snail_direction = area.arrow_direction
 
 func set_sprite_facing(direction: Vector2):
 	match (direction):
 		Vector2.UP:
-			sprite.rotation_degrees = 90
+			if sprite.flip_h:
+				sprite.rotation_degrees = -90
+			else: sprite.rotation_degrees = 90
 		Vector2.DOWN:
-			sprite.rotation_degrees = -90
+			if sprite.flip_h:
+				sprite.rotation_degrees = 90
+			else: sprite.rotation_degrees = -90
 		Vector2.RIGHT:
 			sprite.flip_h = true 
 		Vector2.LEFT:

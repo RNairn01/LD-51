@@ -42,8 +42,10 @@ func set_sprite_facing(direction: Vector2):
 			else: sprite.rotation_degrees = -90
 		Vector2.RIGHT:
 			sprite.flip_h = true 
+			sprite.rotation_degrees = 0
 		Vector2.LEFT:
 			sprite.flip_h = false 
+			sprite.rotation_degrees = 0
 
 
 func move_tween(target):

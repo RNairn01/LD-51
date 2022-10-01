@@ -38,13 +38,11 @@ func _on_collide(area: Area2D):
 
 func crash_and_explode(collidee: Area2D):
 	print(self.name + " - collision with - " + collidee.name)
-	if(self.name < collidee.name or collidee.name.find("Wall") != -1): # Only spawn one explosion
+	if self.name < collidee.name or collidee.name.find("Snail") == -1: # Only spawn one explosion if we crashed into another snail
 		var explosion = load("res://scenes/explosion.tscn").instance()
 		explosion.set_position(self.target_position) # Set the explosion in the square we were moving into
 		get_node("/root/Node2D").add_child(explosion)
-	collidee.queue_free()
 	self.queue_free()
-
 
 func set_sprite_facing(direction: Vector2):
 	match (direction):

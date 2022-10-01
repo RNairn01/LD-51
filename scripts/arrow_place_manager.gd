@@ -63,7 +63,5 @@ func update_arrow_instance(direction):
 			arrow_instance = arrow_left.instance()
 		Vector2.RIGHT:
 			arrow_instance = arrow_right.instance()
-		_:
-			print("This should not happen - arrow instance")
 		
 	arrow_instance.position = current_grid_position

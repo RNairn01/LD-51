@@ -1,17 +1,16 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var timer = get_node("/root/Node2D/GlobalTimer")
+var ticks_counted = 0
+var ticks_to_die = 3
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("Timer").connect("timeout", self, "_die")
+	timer.connect("timeout", self, "_die")
 
 func _die():
-	self.queue_free()
+	if ticks_counted < ticks_to_die:
+		ticks_counted +=1
+	else: 
+		self.queue_free()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

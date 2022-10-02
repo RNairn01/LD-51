@@ -2,6 +2,7 @@ extends Area2D
 
 export var arrow_direction = Vector2.DOWN
 onready var arrow_place_manager = get_node("/root/Node2D/ArrowPlaceManager")
+onready var destroy_sound = $DestroySound
 var time_created = Time.get_ticks_msec()
 
 
@@ -14,6 +15,9 @@ func _ready():
 func _on_click(_viewport:Node, _event:InputEvent, _shape_idx:int):
 	if Input.is_action_just_pressed("right_click"):
 		arrow_place_manager.can_place = true
+		self.visible = false
+		destroy_sound.play()
+		yield(destroy_sound, "finished")
 		self.queue_free()
 
 func _enter_area(area: Area2D):

@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Ludem-Dare-51"
-run/main_scene="res://scenes/screens/play_screen.tscn"
+run/main_scene="res://scenes/screens/title_scene.tscn"
 boot_splash/image="res://assets/sprites/splash_screen.png"
 config/icon="res://assets/sprites/icon.png"
 
@@ -21,7 +21,7 @@ window/size/width=1000
 window/size/height=720
 mouse_cursor/custom_image="res://assets/sprites/mouse_cursor.png"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [gui]
 

@@ -1,0 +1,565 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/sprites/title_screen/layer_3.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/title_screen/layer_4.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/title_screen/layer_5.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/title_screen/layer_6.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/title_screen/title_image.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/title_screen/drop_pod_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/title_screen/drop_pod_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/title_screen/layer_2.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/title_screen/layer_1.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/title_screen/drop_pod_3.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/ui_font_menu.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/sprites/title_screen/button.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/title_screen/box_unticked.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/title_screen/box_ticked.png" type="Texture" id=14]
+[ext_resource path="res://assets/fonts/ui_font_menu_small.tres" type="DynamicFont" id=15]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 64, 18 )
+modulate_color = Color( 0.423529, 0.419608, 0.419608, 1 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 64, 18 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Layer3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -125.44, -1.42223 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Layer4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -100.864, -1.42223 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Layer5:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -129.536, -1.42223 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Layer4b:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10.496, -14.7556 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DropPod:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5.63332, -87.2121 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "title_loop"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Layer3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -125.44, -1.42223 ), Vector2( 128.512, -1.42223 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Layer4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -199.168, -1.42223 ), Vector2( 181.76, -1.42223 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Layer5:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -129.536, -1.42223 ), Vector2( 185.856, -1.42223 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Layer4b:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 10, 10.6, 16.5, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10.496, -14.7556 ), Vector2( 125, -14.756 ), Vector2( 128.512, 169.244 ), Vector2( -96.768, 169.244 ), Vector2( -100.864, -14.75 ), Vector2( 10.496, -14.7556 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DropPod:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.5, 5, 15.4, 19.6, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5.63332, -87.2121 ), Vector2( 1.97685, -79.229 ), Vector2( -30.3599, 73.919 ), Vector2( -86.1891, 85.8828 ), Vector2( -77.9639, -81.6788 ), Vector2( 5.63332, -87.2121 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleImage:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleImage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.737255, 0.737255, 0.737255, 0.392157 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlayButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlayButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PlayButton:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CheckBoxBackground:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Label:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CheckBoxBackground:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Label:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "title_fade_in"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TitleImage:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleImage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 6, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.737255, 0.737255, 0.737255, 0 ), Color( 0.737255, 0.737255, 0.737255, 0.588235 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlayButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlayButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PlayButton:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 6, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CheckBoxBackground:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 6, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Label:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 6, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CheckBoxBackground:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Label:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Layer6" type="Sprite" parent="."]
+position = Vector2( 500, 360 )
+scale = Vector2( 7.8125, 5.625 )
+texture = ExtResource( 4 )
+
+[node name="Layer5" type="Sprite" parent="Layer6"]
+position = Vector2( -129.536, -1.42223 )
+texture = ExtResource( 3 )
+
+[node name="Layer4" type="Sprite" parent="Layer6"]
+position = Vector2( -100.864, -1.42223 )
+texture = ExtResource( 2 )
+
+[node name="Layer4b" type="Sprite" parent="Layer6"]
+position = Vector2( 10.496, -14.7556 )
+texture = ExtResource( 2 )
+
+[node name="DropPod" type="AnimatedSprite" parent="Layer6"]
+position = Vector2( 5.63332, -87.2121 )
+rotation = 0.228638
+frames = SubResource( 3 )
+frame = 2
+playing = true
+
+[node name="Layer3" type="Sprite" parent="Layer6"]
+position = Vector2( -125.44, -1.42223 )
+scale = Vector2( 0.996, 0.9875 )
+texture = ExtResource( 1 )
+
+[node name="Layer2" type="Sprite" parent="Layer6"]
+position = Vector2( 0, -7.62939e-06 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Layer1" type="Sprite" parent="Layer6"]
+position = Vector2( 0, -7.62939e-06 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Layer6"]
+visible = false
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 0.737255, 0.737255, 0.737255, 0.392157 )
+
+[node name="CheckBoxBackground" type="Sprite" parent="Layer6"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -0.896002, 47.4667 )
+scale = Vector2( 1.2855, 1.56697 )
+texture = ExtResource( 12 )
+
+[node name="Button" type="Button" parent="Layer6/CheckBoxBackground"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.4691
+margin_top = -14.3323
+margin_right = -42.4691
+margin_bottom = 4.66772
+rect_scale = Vector2( 0.5, 0.5 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+toggle_mode = true
+pressed = true
+
+[node name="Label" type="Label" parent="Layer6"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -26.112
+margin_top = 40.3556
+margin_right = 36.888
+margin_bottom = 56.3556
+custom_colors/font_color = Color( 0.290196, 0.219608, 0.145098, 1 )
+custom_fonts/font = ExtResource( 15 )
+text = "Tutorial?"
+
+[node name="PlayButton" type="Button" parent="Layer6"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -23.04
+margin_top = 9.95555
+margin_right = 17.96
+margin_bottom = 31.9556
+custom_colors/font_color = Color( 0.290196, 0.219608, 0.145098, 1 )
+custom_colors/font_color_hover = Color( 0.290196, 0.219608, 0.145098, 1 )
+custom_fonts/font = ExtResource( 11 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Play"
+
+[node name="TitleImage" type="Sprite" parent="Layer6"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -2.56, -35.5556 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Layer6"]
+autoplay = "title_loop"
+anims/RESET = SubResource( 1 )
+anims/title_loop = SubResource( 2 )
+
+[node name="TitleCardAnimation" type="AnimationPlayer" parent="Layer6"]
+autoplay = "title_fade_in"
+anims/RESET = SubResource( 4 )
+anims/title_fade_in = SubResource( 5 )

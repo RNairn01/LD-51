@@ -10,6 +10,7 @@ onready var next = snail_order.pop_front().instance()
 onready var landing_indicator = $LandingIndicator
 onready var animation_player = $AnimationPlayer
 onready var game_parent = get_node("/root/Node2D")
+onready var music_controller = get_node("/root/Node2D/MusicController")
 
 var rng = RandomNumberGenerator.new()
 
@@ -18,16 +19,16 @@ signal play_tutorial
 
 var valid_spawn_positions: PoolVector2Array = []
 var next_spawn_pos: Vector2
-var snail_order = [normal_snail]
+var snail_order = [normal_snail, speedy_snail, big_snail, rebel_snail]
 var tutorial_snail_order = [
 	normal_snail, normal_snail, normal_snail, normal_snail, normal_snail, 
 	speedy_snail, normal_snail, normal_snail, speedy_snail, normal_snail,
 	normal_snail, big_snail, normal_snail, speedy_snail, big_snail,
 	normal_snail, normal_snail, rebel_snail, normal_snail, speedy_snail
 ]
-var speedy_tutorial_needed = true
-var big_tutorial_needed = true
-var rebel_tutorial_needed = true
+var speedy_not_seen = true
+var big_not_seen = true
+var rebel_not_seen = true
 
 func _enter_tree():
 	rng.randomize()
@@ -53,8 +54,7 @@ func _on_timeout():
 	#Spawn snail
 	next.position = next_spawn_pos
 	next.snail_direction = get_snail_initial_direction()
-	if game_state_manager.is_tutorial:
-		check_and_play_tutorial(next.name)
+	check_music_and_play_tutorial(next.name)
 
 	game_parent.add_child(next)
 
@@ -68,11 +68,11 @@ func _on_timeout():
 	landing_indicator.modulate.a = 0
 	landing_indicator.position = next_spawn_pos
 	emit_signal("next_snail", next.name)
-	if snail_order.size() < 5:
+	if snail_order.size() < 3:
 		generate_more_snails()
 
 func generate_more_snails():
-	for _i in range(1,20):
+	for _i in range(1,5):
 		snail_order.append(random_snail())
 
 func random_snail():
@@ -82,9 +82,15 @@ func random_snail():
 	elif random_n < 71:
 		return speedy_snail
 	elif random_n < 91:
-		return big_snail
+		if speedy_not_seen:
+			return speedy_snail
+		else: return big_snail
 	else:
-		return rebel_snail
+		if speedy_not_seen:
+			return speedy_snail
+		elif big_not_seen:
+			return big_snail
+		else: return rebel_snail
 
 func populate_spawn_locations():
 	#We don't allow spawns right next to the wall to prevent snails immediately crashing into it
@@ -122,14 +128,25 @@ func _on_pause():
 func _on_unpause():
 	animation_player.play()
 
-func check_and_play_tutorial(name):
-	if name.find("Speedy") != -1 and speedy_tutorial_needed:
-		emit_signal("play_tutorial", 3)
-		speedy_tutorial_needed = false
-	elif name.find("Big") != -1 and big_tutorial_needed:
-		emit_signal("play_tutorial", 4)
-		big_tutorial_needed = false
-	elif name.find("Rebel") != -1 and rebel_tutorial_needed:
-		emit_signal("play_tutorial", 5)
-		rebel_tutorial_needed = false
+func check_music_and_play_tutorial(name):
+	if name.find("Speedy") != -1 and speedy_not_seen:
+		speedy_not_seen = false
+		if game_state_manager.is_tutorial:
+			emit_signal("play_tutorial", 3)
+		yield(music_controller.normal_theme_player, "finished")
+		music_controller.changeSound("speedy_theme")
+
+	elif name.find("Big") != -1 and big_not_seen:
+		big_not_seen = false
+		if game_state_manager.is_tutorial:
+			emit_signal("play_tutorial", 4)
+		yield(music_controller.speedy_theme_player, "finished")
+		music_controller.changeSound("big_theme")
+
+	elif name.find("Rebel") != -1 and rebel_not_seen:
+		rebel_not_seen = false
+		if game_state_manager.is_tutorial:
+			emit_signal("play_tutorial", 5)
+		yield(music_controller.big_theme_player, "finished")
+		music_controller.changeSound("full_theme")
 

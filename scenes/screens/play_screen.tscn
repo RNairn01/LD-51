@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/snails/snail_normal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/arrow_place_manager.tscn" type="PackedScene" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/sprites/snails/normal_snail.png" type="Texture" id=20]
 [ext_resource path="res://scripts/next_snail_display.gd" type="Script" id=21]
 [ext_resource path="res://scripts/snail_order_manager.gd" type="Script" id=22]
+[ext_resource path="res://assets/sprites/test_circle.png" type="Texture" id=23]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -51,6 +52,37 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("LandingIndicator:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0.913725, 0.184314, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_in"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("LandingIndicator:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.913725, 0.184314, 0 ), Color( 0, 0.913725, 0.184314, 1 ) ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -124,10 +156,19 @@ align = 1
 valign = 1
 script = ExtResource( 6 )
 
+[node name="GridClickManager" parent="." instance=ExtResource( 3 )]
+
 [node name="SnailOrderManager" type="Node2D" parent="."]
 script = ExtResource( 22 )
 
-[node name="GridClickManager" parent="." instance=ExtResource( 3 )]
+[node name="LandingIndicator" type="Sprite" parent="SnailOrderManager"]
+modulate = Color( 0, 0.913725, 0.184314, 0 )
+texture = ExtResource( 23 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SnailOrderManager"]
+anims/RESET = SubResource( 3 )
+anims/fade_in = SubResource( 4 )
 
 [node name="ArrowPlaceManager" parent="." instance=ExtResource( 2 )]
 

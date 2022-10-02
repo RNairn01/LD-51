@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/snails/snail_normal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/arrow_place_manager.tscn" type="PackedScene" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://scripts/next_snail_display.gd" type="Script" id=21]
 [ext_resource path="res://scripts/snail_order_manager.gd" type="Script" id=22]
 [ext_resource path="res://assets/sprites/test_circle.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/life_active.png" type="Texture" id=24]
+[ext_resource path="res://scripts/life_counter.gd" type="Script" id=25]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -214,16 +216,6 @@ position = Vector2( 0.379761, 399 )
 scale = Vector2( 2.27848, 3 )
 texture = ExtResource( 17 )
 
-[node name="LivesLabel" type="Label" parent="UI/SidePanel"]
-margin_left = -104.051
-margin_top = -480.0
-margin_right = 108.949
-margin_bottom = -432.0
-custom_fonts/font = ExtResource( 19 )
-text = "Lives"
-align = 1
-valign = 1
-
 [node name="TimerLabel" type="Label" parent="UI/SidePanel"]
 margin_left = -130.633
 margin_top = -588.0
@@ -235,13 +227,47 @@ align = 1
 valign = 1
 script = ExtResource( 6 )
 
+[node name="LifeCounter" type="Control" parent="UI/SidePanel"]
+margin_left = -128.0
+margin_top = -491.0
+margin_right = 125.0
+margin_bottom = -321.0
+script = ExtResource( 25 )
+
+[node name="LivesLabel" type="Label" parent="UI/SidePanel/LifeCounter"]
+margin_left = 23.949
+margin_top = 10.0
+margin_right = 236.949
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 19 )
+text = "Lives"
+align = 1
+valign = 1
+
+[node name="Life1" type="Sprite" parent="UI/SidePanel/LifeCounter"]
+position = Vector2( 31.5445, 107 )
+scale = Vector2( 1.97295, 2.5 )
+texture = ExtResource( 24 )
+
+[node name="Life2" type="Sprite" parent="UI/SidePanel/LifeCounter"]
+position = Vector2( 121.164, 107 )
+scale = Vector2( 1.97295, 2.5 )
+texture = ExtResource( 24 )
+
+[node name="Life3" type="Sprite" parent="UI/SidePanel/LifeCounter"]
+position = Vector2( 214.582, 107 )
+scale = Vector2( 1.97295, 2.5 )
+texture = ExtResource( 24 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
 layer = 0
 follow_viewport_enable = true
 
 [node name="PauseOverlay" type="ColorRect" parent="UI/CanvasLayer"]
 visible = false
-margin_right = 1152.0
-margin_bottom = 1152.0
+margin_left = -7552.0
+margin_top = -3680.0
+margin_right = 1219.0
+margin_bottom = 4160.0
 color = Color( 0.501961, 0.501961, 0.501961, 0.647059 )
 script = ExtResource( 15 )

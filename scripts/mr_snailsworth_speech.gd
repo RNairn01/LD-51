@@ -10,6 +10,7 @@ onready var text_label = $Anchor/TextLabel
 onready var text_bubble = $Anchor/SpeechBubble
 onready var tween = $Anchor/Tween
 onready var next_button = $Anchor/NextButton
+onready var endless_mode_button = $Anchor/EndlessModeButton
 
 var tutorial_dialogue = [
 	[
@@ -58,10 +59,14 @@ func set_talk_state():
 func close_speech_bubble():
 	self.set_base_state()
 	speech_anchor.visible = false
-	if not game_state_manager.is_game_over:
+
+	if game_state_manager.game_not_won or (game_state_manager.in_endless_mode and not game_state_manager.is_game_over):
 		game_state_manager.can_unpause = true
 		game_state_manager.is_game_paused = false
 		game_state_manager.emit_signal("game_unpause")
+	else:
+		print("Go to high score screen")
+
 
 func _play_dialogue(dialogue_number):
 	match(dialogue_number):
@@ -81,6 +86,8 @@ func _play_dialogue(dialogue_number):
 	display_text(current_dialogue[0])
 
 func display_text(text):
+	endless_mode_button.visible = false
+	endless_mode_button.disabled = true
 	next_button.visible = false
 	next_button.disabled = true
 	self.set_talk_state()
@@ -95,7 +102,9 @@ func display_text(text):
 	yield(tween, "tween_all_completed")
 	next_button.visible = true
 	next_button.disabled = false
-
+	if current_dialogue.size() <= 1 and not game_state_manager.game_not_won and not game_state_manager.is_game_over:
+		endless_mode_button.visible = true
+		endless_mode_button.disabled = false
 
 func _on_next_button_press():
 	current_dialogue.pop_front()
@@ -103,3 +112,7 @@ func _on_next_button_press():
 		display_text(current_dialogue[0])
 	else:
 		self.close_speech_bubble()
+
+func _on_endless_mode_press():
+	game_state_manager.start_endless_mode()
+	self.close_speech_bubble()

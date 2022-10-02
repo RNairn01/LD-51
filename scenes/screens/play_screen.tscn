@@ -184,9 +184,6 @@ scale = Vector2( 3.00001, 3 )
 z_index = 2
 texture = ExtResource( 17 )
 script = ExtResource( 27 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Anchor" type="Node2D" parent="MrSnailsworth"]
 position = Vector2( -472.499, -325 )
@@ -213,6 +210,15 @@ margin_left = 1103.0
 margin_top = 957.0
 margin_right = 1156.0
 margin_bottom = 989.0
+
+[node name="EndlessModeButton" type="Button" parent="MrSnailsworth/Anchor"]
+visible = false
+margin_left = 696.0
+margin_top = 957.0
+margin_right = 822.0
+margin_bottom = 997.0
+disabled = true
+text = "Endless Mode"
 
 [node name="Tween" type="Tween" parent="MrSnailsworth/Anchor"]
 
@@ -346,5 +352,6 @@ align = 1
 valign = 1
 
 [connection signal="button_down" from="MrSnailsworth/Anchor/NextButton" to="MrSnailsworth" method="_on_next_button_press"]
+[connection signal="button_down" from="MrSnailsworth/Anchor/EndlessModeButton" to="MrSnailsworth" method="_on_endless_mode_press"]
 
 [editable path="SnailNormal"]

@@ -3,6 +3,7 @@ extends Sprite
 #This is not a very good dialogue system. I am tired.
 
 onready var game_state_manager = get_node("/root/Node2D/GameStateManager")
+onready var sfx_controller = get_node("/root/Node2D/SfxController")
 onready var base_state = preload("res://assets/sprites/mr_snailsworth.png")
 onready var talk_state = preload("res://assets/sprites/mr_snailsworth_talking.png")
 onready var speech_anchor = $Anchor
@@ -107,6 +108,7 @@ func display_text(text):
 		endless_mode_button.disabled = false
 
 func _on_next_button_press():
+	sfx_controller.play_sound("click")
 	current_dialogue.pop_front()
 	if current_dialogue.size() >= 1:
 		display_text(current_dialogue[0])
@@ -114,5 +116,6 @@ func _on_next_button_press():
 		self.close_speech_bubble()
 
 func _on_endless_mode_press():
+	sfx_controller.play_sound("click")
 	game_state_manager.start_endless_mode()
 	self.close_speech_bubble()

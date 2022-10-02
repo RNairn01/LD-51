@@ -6,7 +6,8 @@ extends Node
 # var b = "text"
 
 onready var sounds_by_key = {
-	"explosion": get_node("./ExplosionPlayer")
+	"explosion": get_node("./ExplosionPlayer"),
+	"click": get_node("./ClickPlayer")
 }
 
 
@@ -14,7 +15,7 @@ onready var sounds_by_key = {
 func _ready():
 	pass
 
-func playSound(new_sound: String):
+func play_sound(new_sound: String):
 	sounds_by_key[new_sound].play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

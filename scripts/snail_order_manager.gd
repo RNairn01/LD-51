@@ -44,6 +44,7 @@ func _ready():
 func _on_timeout():
 	#Spawn snail
 	next.position = next_spawn_pos
+	next.snail_direction = get_snail_initial_direction()
 	game_parent.add_child(next)
 
 	#Set up next snail
@@ -82,3 +83,21 @@ func populate_spawn_locations():
 func get_next_spawn_pos():
 	var random_n = rng.randi_range(0,valid_spawn_positions.size()-1)
 	return valid_spawn_positions[random_n]
+
+func get_snail_initial_direction():
+	var random_n = rng.randi_range(0,3)
+	var output: Vector2
+	match(random_n):
+		0:
+			output = Vector2.UP
+		1:
+			output = Vector2.DOWN
+		2:
+			output = Vector2.LEFT
+		3:
+			output = Vector2.RIGHT
+		_:
+			print("You did something wrong")
+			output = Vector2.UP
+			
+	return output

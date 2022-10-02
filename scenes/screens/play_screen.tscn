@@ -32,11 +32,7 @@
 [ext_resource path="res://assets/sprites/play_button.png" type="Texture" id=30]
 [ext_resource path="res://assets/fonts/ui_font_tiny.tres" type="DynamicFont" id=31]
 [ext_resource path="res://assets/sfx/click.ogg" type="AudioStream" id=32]
-<<<<<<< HEAD
 [ext_resource path="res://scripts/music_controller.gd" type="Script" id=33]
-=======
-[ext_resource path="res://assets/music/Big Theme.ogg" type="AudioStream" id=33]
->>>>>>> 6b0a13517378bb4bf8b7dcb3236da892b7c90341
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -172,11 +168,7 @@ stream = ExtResource( 8 )
 stream = ExtResource( 9 )
 
 [node name="BigThemePlayer" type="AudioStreamPlayer" parent="MusicController"]
-<<<<<<< HEAD
 stream = ExtResource( 10 )
-=======
-stream = ExtResource( 33 )
->>>>>>> 6b0a13517378bb4bf8b7dcb3236da892b7c90341
 
 [node name="NormalThemePlayer" type="AudioStreamPlayer" parent="MusicController"]
 stream = ExtResource( 7 )

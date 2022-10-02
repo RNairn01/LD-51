@@ -12,9 +12,12 @@ signal game_pause
 signal game_unpause
 signal life_lost
 signal score_increase
+signal play_dialogue
 
 
 func _ready():
+	yield(self.get_parent(), "ready")
+	_play_scene(2)
 	pass
 
 func _process(delta):
@@ -41,3 +44,11 @@ func increase_score():
 func _lose_life():
 	lives_remaining -= 1
 	emit_signal("life_lost", lives_remaining)
+
+func _play_scene(scene_n):
+	print("play")
+	emit_signal("game_pause")
+	is_game_paused = true
+	can_unpause = false
+	emit_signal("play_dialogue", scene_n)
+

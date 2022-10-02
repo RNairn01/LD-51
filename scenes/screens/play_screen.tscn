@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/snails/snail_normal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/arrow_place_manager.tscn" type="PackedScene" id=2]
@@ -26,6 +26,9 @@
 [ext_resource path="res://assets/sprites/life_active.png" type="Texture" id=24]
 [ext_resource path="res://scripts/life_counter.gd" type="Script" id=25]
 [ext_resource path="res://scripts/score_display.gd" type="Script" id=26]
+[ext_resource path="res://scripts/mr_snailsworth_speech.gd" type="Script" id=27]
+[ext_resource path="res://assets/sprites/speech_bubble.png" type="Texture" id=28]
+[ext_resource path="res://assets/fonts/ui_font_small.tres" type="DynamicFont" id=29]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -130,6 +133,9 @@ drag_margin_v_enabled = true
 [node name="SnailNormal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 160, 448 )
 
+[node name="SnailSprite" parent="SnailNormal" index="0"]
+flip_h = true
+
 [node name="SnailNormal2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 928, 448 )
 snail_direction = Vector2( -1, 0 )
@@ -172,6 +178,56 @@ position = Vector2( -24, 1152 )
 position = Vector2( 1176, -24 )
 rotation = 1.5708
 
+[node name="MrSnailsworth" type="Sprite" parent="."]
+position = Vector2( 1417.5, 975 )
+scale = Vector2( 3.00001, 3 )
+z_index = 2
+texture = ExtResource( 17 )
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Anchor" type="Node2D" parent="MrSnailsworth"]
+position = Vector2( -472.499, -325 )
+scale = Vector2( 0.333333, 0.333333 )
+
+[node name="SpeechBubble" type="Sprite" parent="MrSnailsworth/Anchor"]
+position = Vector2( 896, 864 )
+scale = Vector2( 4.57813, 3.58434 )
+texture = ExtResource( 28 )
+
+[node name="TextLabel" type="Label" parent="MrSnailsworth/Anchor"]
+margin_left = 640.0
+margin_top = 739.0
+margin_right = 1152.0
+margin_bottom = 991.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 29 )
+valign = 1
+autowrap = true
+
+[node name="NextButton" type="Button" parent="MrSnailsworth/Anchor"]
+margin_left = 1103.0
+margin_top = 957.0
+margin_right = 1156.0
+margin_bottom = 989.0
+
+[node name="Tween" type="Tween" parent="MrSnailsworth/Anchor"]
+
+[node name="CanvasLayer" type="Node2D" parent="."]
+z_index = 1
+
+[node name="PauseOverlay" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_left = -7552.0
+margin_top = -3680.0
+margin_right = 1219.0
+margin_bottom = 4160.0
+mouse_filter = 2
+color = Color( 0.501961, 0.501961, 0.501961, 0.647059 )
+script = ExtResource( 15 )
+
 [node name="UI" type="Control" parent="."]
 margin_left = -32.0
 margin_top = -32.0
@@ -179,6 +235,7 @@ margin_right = 2144.0
 margin_bottom = 1184.0
 mouse_filter = 2
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -212,11 +269,6 @@ texture = ExtResource( 20 )
 anims/RESET = SubResource( 1 )
 anims/fade_out_and_in = SubResource( 2 )
 
-[node name="MrSnailsworth" type="Sprite" parent="UI/SidePanel"]
-position = Vector2( 0.379761, 399 )
-scale = Vector2( 2.27848, 3 )
-texture = ExtResource( 17 )
-
 [node name="TimerLabel" type="Label" parent="UI/SidePanel"]
 margin_left = -130.633
 margin_top = -588.0
@@ -233,6 +285,7 @@ margin_left = -128.0
 margin_top = -491.0
 margin_right = 125.0
 margin_bottom = -321.0
+mouse_filter = 2
 script = ExtResource( 25 )
 
 [node name="LivesLabel" type="Label" parent="UI/SidePanel/LifeCounter"]
@@ -265,6 +318,7 @@ margin_left = -128.354
 margin_top = 32.0
 margin_right = 124.646
 margin_bottom = 202.0
+mouse_filter = 2
 script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
@@ -290,15 +344,6 @@ text = "9999"
 align = 1
 valign = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
-layer = 0
-follow_viewport_enable = true
+[connection signal="button_down" from="MrSnailsworth/Anchor/NextButton" to="MrSnailsworth" method="_on_next_button_press"]
 
-[node name="PauseOverlay" type="ColorRect" parent="UI/CanvasLayer"]
-visible = false
-margin_left = -7552.0
-margin_top = -3680.0
-margin_right = 1219.0
-margin_bottom = 4160.0
-color = Color( 0.501961, 0.501961, 0.501961, 0.647059 )
-script = ExtResource( 15 )
+[editable path="SnailNormal"]

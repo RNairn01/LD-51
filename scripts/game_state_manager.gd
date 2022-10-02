@@ -6,10 +6,12 @@ var is_game_over = false
 var game_can_end = true
 var is_game_paused = false
 var can_unpause = true
+var current_score = 2
 
 signal game_pause 
 signal game_unpause
 signal life_lost
+signal score_increase
 
 
 func _ready():
@@ -31,6 +33,10 @@ func _process(delta):
 		print("pause")
 		is_game_paused = true
 		emit_signal("game_pause")
+
+func increase_score():
+	current_score += 1
+	emit_signal("score_increase", current_score)
 
 func _lose_life():
 	lives_remaining -= 1

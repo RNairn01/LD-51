@@ -50,6 +50,9 @@ func _on_timeout():
 	next.snail_direction = get_snail_initial_direction()
 	game_parent.add_child(next)
 
+	#Increase score
+	game_state_manager.increase_score()
+
 	#Set up next snail
 	next = snail_order.pop_front().instance()
 	animation_player.play("fade_in")

@@ -15,6 +15,10 @@ run/main_scene="res://scenes/screens/title_scene.tscn"
 boot_splash/image="res://assets/sprites/splash_screen.png"
 config/icon="res://assets/sprites/icon.png"
 
+[autoload]
+
+SceneManager="*res://scenes/scene_manager.tscn"
+
 [display]
 
 window/size/width=1000

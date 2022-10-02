@@ -6,5 +6,12 @@ onready var play_button = $Layer6/PlayButton
 
 
 func _ready():
+	self.set_tutorial_state()
 	tutorial_toggle.connect("button_down", scene_manager, "_toggle_tutorial")
 	play_button.connect("button_down", scene_manager, "_on_click_play")
+
+func set_tutorial_state():
+	if scene_manager.tutorial_selected:
+		tutorial_toggle.pressed = true
+	else: 
+		tutorial_toggle.pressed = false

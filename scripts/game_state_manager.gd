@@ -8,7 +8,7 @@ var is_game_paused = false
 var can_unpause = true
 var game_not_won = true
 var current_score = 2
-var winning_score = 3
+var winning_score = 30
 
 signal game_pause 
 signal game_unpause

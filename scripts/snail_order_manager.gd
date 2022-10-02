@@ -133,20 +133,20 @@ func check_music_and_play_tutorial(name):
 		speedy_not_seen = false
 		if game_state_manager.is_tutorial:
 			emit_signal("play_tutorial", 3)
-		yield(music_controller.normal_theme_player, "finished")
+		# yield(music_controller.normal_theme_player, "finished")
 		music_controller.changeSound("speedy_theme")
 
 	elif name.find("Big") != -1 and big_not_seen:
 		big_not_seen = false
 		if game_state_manager.is_tutorial:
 			emit_signal("play_tutorial", 4)
-		yield(music_controller.speedy_theme_player, "finished")
+		# yield(music_controller.speedy_theme_player, "finished")
 		music_controller.changeSound("big_theme")
 
 	elif name.find("Rebel") != -1 and rebel_not_seen:
 		rebel_not_seen = false
 		if game_state_manager.is_tutorial:
 			emit_signal("play_tutorial", 5)
-		yield(music_controller.big_theme_player, "finished")
+		# yield(music_controller.big_theme_player, "finished")
 		music_controller.changeSound("full_theme")
 

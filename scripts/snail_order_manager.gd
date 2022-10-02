@@ -5,6 +5,7 @@ var speedy_snail = preload("res://scenes/snails/snail_speedy.tscn")
 var big_snail = preload("res://scenes/snails/snail_big.tscn")
 var rebel_snail = preload("res://scenes/snails/snail_rebel.tscn")
 onready var timer_label = get_node("/root/Node2D/UI/SidePanel/TimerLabel")
+onready var game_state_manager = get_node("/root/Node2D/GameStateManager")
 onready var next = snail_order.pop_front().instance()
 onready var landing_indicator = $LandingIndicator
 onready var animation_player = $AnimationPlayer
@@ -31,6 +32,8 @@ func _enter_tree():
 	next_spawn_pos = get_next_spawn_pos()
 
 func _ready():
+	game_state_manager.connect("game_pause", self, "_on_pause")
+	game_state_manager.connect("game_unpause", self, "_on_unpause")
 	timer_label.connect("timeout_label", self, "_on_timeout")
 	animation_player.play("fade_in")
 	landing_indicator.position = next_spawn_pos
@@ -101,3 +104,9 @@ func get_snail_initial_direction():
 			output = Vector2.UP
 			
 	return output
+
+func _on_pause():
+	animation_player.stop(false)
+
+func _on_unpause():
+	animation_player.play()

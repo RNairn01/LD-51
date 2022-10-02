@@ -14,6 +14,7 @@ onready var game_parent = get_node("/root/Node2D")
 var rng = RandomNumberGenerator.new()
 
 signal next_snail
+signal play_tutorial
 
 var valid_spawn_positions: PoolVector2Array = []
 var next_spawn_pos: Vector2
@@ -24,6 +25,9 @@ var tutorial_snail_order = [
 	normal_snail, big_snail, normal_snail, speedy_snail, big_snail,
 	normal_snail, normal_snail, rebel_snail, normal_snail, speedy_snail
 ]
+var speedy_tutorial_needed = true
+var big_tutorial_needed = true
+var rebel_tutorial_needed = true
 
 func _enter_tree():
 	rng.randomize()
@@ -34,6 +38,7 @@ func _enter_tree():
 func _ready():
 	game_state_manager.connect("game_pause", self, "_on_pause")
 	game_state_manager.connect("game_unpause", self, "_on_unpause")
+	self.connect("play_tutorial", game_state_manager, "_play_scene")
 	timer_label.connect("timeout_label", self, "_on_timeout")
 	animation_player.play("fade_in")
 	landing_indicator.position = next_spawn_pos
@@ -48,6 +53,9 @@ func _on_timeout():
 	#Spawn snail
 	next.position = next_spawn_pos
 	next.snail_direction = get_snail_initial_direction()
+	if game_state_manager.is_tutorial:
+		check_and_play_tutorial(next.name)
+
 	game_parent.add_child(next)
 
 	#Increase score
@@ -113,3 +121,15 @@ func _on_pause():
 
 func _on_unpause():
 	animation_player.play()
+
+func check_and_play_tutorial(name):
+	if name.find("Speedy") != -1 and speedy_tutorial_needed:
+		emit_signal("play_tutorial", 3)
+		speedy_tutorial_needed = false
+	elif name.find("Big") != -1 and big_tutorial_needed:
+		emit_signal("play_tutorial", 4)
+		big_tutorial_needed = false
+	elif name.find("Rebel") != -1 and rebel_tutorial_needed:
+		emit_signal("play_tutorial", 5)
+		rebel_tutorial_needed = false
+

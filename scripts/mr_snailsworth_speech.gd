@@ -13,27 +13,27 @@ onready var next_button = $Anchor/NextButton
 
 var tutorial_dialogue = [
 	[
-		"Ah yes, the new Snail Traffic Control officer! I’m Mr. Snailsworth, the manager of this department.",
-		"Let’s get you started right away. Let’s take a look at the Snail Traffic Control Board.",
-		"Oh! Those two snails are about to crash! Set a control point by clicking and dragging on a square to let one of them know to change direction!.",
+		"Ah yes, the new Snail Traffic Control officer! I'm Mr. Snailsworth, the manager of this department.",
+		"Let's get you started right away. Let's take a look at the Snail Traffic Control Board.",
+		"Oh! Those two snails are about to crash! Set a control point by clicking and dragging on a square to let one of them know to change direction!",
 		"Once they hit a control point, that snail will go off in the other direction. We would be in big trouble if two of them collided!",
 		"You can right click on any control point you have placed to remove it. Isn't that handy?",
-		"That’s really all there is to it. Just keep them in a nice, safe holding pattern. Keep in mind, more will be coming soon! Just call me if you get into trouble."
+		"That's really all there is to it. Just keep them in a nice, safe holding pattern. Keep in mind, more will be coming soon! Just call me if you get into trouble."
 	],
 	[
-		"Oh! That’s a fast one! Don’t worry, they are similar to the others, just plan your control arrows ahead and you will be fine."
+		"Oh! That's a fast one! Don't worry, theyre similar to the others, just plan your control arrows ahead and everything will be fine."
 	],
 	[
 		"Oof! Keep an eye out for those Heavy Duty snails. Make sure to avoid hitting two arrows at the same time, or they tend to get confused and explode!"
 	],
 	[
-		"Wha..? I don’t like the looks of that one. I’ve heard of these sorts, coming in, changing direction without so much as a by-your-leave from STC. Best to keep them away from the others, if you can."
+		"Wha..? I don't like the looks of that one. I've heard of these sorts, coming in, changing direction without so much as a by-your-leave from STC. Best to keep them away from the others, if you can."
 	]
 ]
 
 var fail_dialogue = [
-	"NO! Get off the console! Do you have any idea how much damage you’ve caused? Not to mention the loss of life! This is a catastrophe!",
-	"Get out of here before I call the police! You’re fired! And you can expect a call from our legal department!"
+	"NO! Get off the console! Do you have any idea how much damage you've caused? Not to mention the loss of life! This is a catastrophe!",
+	"Get out of here before I call the police! You're fired! And you can expect a call from our legal department!"
 ]
 
 var win_dialogue = [
@@ -58,9 +58,10 @@ func set_talk_state():
 func close_speech_bubble():
 	self.set_base_state()
 	speech_anchor.visible = false
-	game_state_manager.can_unpause = true
-	game_state_manager.is_game_paused = false
-	game_state_manager.emit_signal("game_unpause")
+	if not game_state_manager.is_game_over:
+		game_state_manager.can_unpause = true
+		game_state_manager.is_game_paused = false
+		game_state_manager.emit_signal("game_unpause")
 
 func _play_dialogue(dialogue_number):
 	match(dialogue_number):

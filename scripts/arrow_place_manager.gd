@@ -2,6 +2,7 @@ extends Node2D
 
 onready var grid_manager = get_node("/root/Node2D/GridClickManager")
 onready var placement_guide = $PlacementGuide
+onready var arrow_sound = $ArrowSound
 var arrow_left = preload("res://scenes/arrows/arrow_left.tscn")
 var arrow_right = preload("res://scenes/arrows/arrow_right.tscn")
 var arrow_up = preload("res://scenes/arrows/arrow_up.tscn")
@@ -35,6 +36,7 @@ func _process(_delta):
 			update_mouse_direction = false
 			placement_guide.visible = false
 			add_child(arrow_instance)
+			arrow_sound.play()
 			update_arrow_instance(current_mouse_direction)
 
 		

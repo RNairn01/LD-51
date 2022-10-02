@@ -1,5 +1,7 @@
 extends Node
 
+onready var scene_manager = get_node("/root/SceneManager")
+
 var is_tutorial = false
 var lives_remaining = 3
 var is_game_over = false
@@ -19,6 +21,7 @@ signal play_dialogue
 
 
 func _ready():
+	is_tutorial = scene_manager.tutorial_selected
 	yield(self.get_parent(), "ready")
 	if is_tutorial:
 		_play_scene(2)

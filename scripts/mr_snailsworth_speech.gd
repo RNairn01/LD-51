@@ -62,13 +62,13 @@ func close_speech_bubble():
 	speech_anchor.visible = false
 
 	if game_state_manager.is_game_over:
-		print("Go to high score screen")
+		game_state_manager.high_score_screen()
 	elif game_state_manager.game_not_won or (game_state_manager.in_endless_mode and not game_state_manager.is_game_over):
 		game_state_manager.can_unpause = true
 		game_state_manager.is_game_paused = false
 		game_state_manager.emit_signal("game_unpause")
 	else:
-		print("Go to high score screen")
+		game_state_manager.high_score_screen()
 
 
 func _play_dialogue(dialogue_number):

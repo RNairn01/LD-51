@@ -21,6 +21,7 @@ signal play_dialogue
 
 
 func _ready():
+	scene_manager.final_score = 0
 	is_tutorial = scene_manager.tutorial_selected
 	yield(self.get_parent(), "ready")
 	if is_tutorial:
@@ -69,4 +70,8 @@ func _play_scene(scene_n):
 
 func start_endless_mode():
 	self.in_endless_mode = true
+
+func high_score_screen():
+	scene_manager.final_score = self.current_score
+	scene_manager._load_high_score_scene()
 

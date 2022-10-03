@@ -22,10 +22,10 @@ var valid_spawn_positions: PoolVector2Array = []
 var next_spawn_pos: Vector2
 var snail_order = [normal_snail, normal_snail, normal_snail]
 var tutorial_snail_order = [
-	normal_snail, normal_snail, normal_snail, speedy_snail, normal_snail,
-	normal_snail, big_snail, normal_snail, speedy_snail, normal_snail,
-	normal_snail, normal_snail, normal_snail, big_snail, normal_snail,
-	normal_snail, speedy_snail, rebel_snail, normal_snail, big_snail
+	normal_snail, normal_snail, normal_snail, speedy_snail,
+	normal_snail, big_snail, normal_snail, speedy_snail,
+	normal_snail, normal_snail, normal_snail, big_snail, 
+	normal_snail, speedy_snail, rebel_snail, normal_snail
 ]
 
 var speedy_not_seen = true
@@ -49,6 +49,8 @@ func _ready():
 
 	if game_state_manager.is_tutorial():
 		snail_order = tutorial_snail_order.duplicate(true)
+		print("Tutorial enabled. Snail order: " + str(snail_order))
+	
 	if snail_order.size() < 5:
 		generate_more_snails()
 

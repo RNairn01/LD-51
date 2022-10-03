@@ -1,7 +1,7 @@
 extends Area2D
 
 var tile_size = 32
-var target_position = null
+onready var target_position = position
 
 onready var timer = get_node("/root/Node2D/GlobalTimer")
 onready var arrow_place_manager = get_node("/root/Node2D/ArrowPlaceManager")

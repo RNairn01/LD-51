@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tutorial05.ogg-e00085445dfc4a6fe68dbae116345577.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/dialogue/Tutorial05.ogg"
+dest_files=[ "res://.import/Tutorial05.ogg-e00085445dfc4a6fe68dbae116345577.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -58,6 +58,7 @@ func _on_timeout():
 	check_music_and_play_tutorial(next.name)
 
 	game_parent.add_child(next)
+	animation_player.play("RESET")
 
 	#Increase score
 	game_state_manager.increase_score()

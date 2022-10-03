@@ -7,7 +7,8 @@ extends Node
 
 onready var sounds_by_key = {
 	"explosion": get_node("./ExplosionPlayer"),
-	"click": get_node("./ClickPlayer")
+	"click": get_node("./ClickPlayer"),
+	"hiss": get_node("./HissPlayer")
 }
 
 

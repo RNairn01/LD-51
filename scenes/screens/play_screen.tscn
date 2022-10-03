@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scenes/snails/snail_normal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/arrow_place_manager.tscn" type="PackedScene" id=2]
@@ -35,6 +35,7 @@
 [ext_resource path="res://scripts/music_controller.gd" type="Script" id=33]
 [ext_resource path="res://scripts/dialogue_sound_player.gd" type="Script" id=34]
 [ext_resource path="res://assets/sprites/drop_pod.png" type="Texture" id=35]
+[ext_resource path="res://assets/sfx/Tsss.ogg" type="AudioStream" id=36]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -178,7 +179,7 @@ drag_margin_v_enabled = true
 position = Vector2( 160, 448 )
 
 [node name="SnailSprite" parent="SnailNormal" index="0"]
-frame = 0
+frame = 2
 flip_h = true
 
 [node name="SnailNormal2" parent="." instance=ExtResource( 1 )]
@@ -212,6 +213,10 @@ stream = ExtResource( 4 )
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="SfxController"]
 stream = ExtResource( 32 )
 volume_db = 10.0
+
+[node name="HissPlayer" type="AudioStreamPlayer" parent="SfxController"]
+stream = ExtResource( 36 )
+volume_db = -5.0
 
 [node name="Wall" parent="." instance=ExtResource( 12 )]
 position = Vector2( -24, -24 )

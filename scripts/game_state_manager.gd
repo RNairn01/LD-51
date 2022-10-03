@@ -11,7 +11,7 @@ var is_game_paused = false
 var can_unpause = true
 var game_not_won = true
 var current_score = 2
-var winning_score = 5
+var winning_score = 20
 var in_endless_mode = false
 
 

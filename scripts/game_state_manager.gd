@@ -1,6 +1,7 @@
 extends Node
 
 onready var scene_manager = get_node("/root/SceneManager")
+onready var music_controller = get_node("/root/Node2D/MusicController")
 
 var is_tutorial = false
 var lives_remaining = 3
@@ -10,8 +11,9 @@ var is_game_paused = false
 var can_unpause = true
 var game_not_won = true
 var current_score = 2
-var winning_score = 30
+var winning_score = 5
 var in_endless_mode = false
+
 
 signal game_pause 
 signal game_unpause
@@ -46,6 +48,7 @@ func game_over():
 	game_can_end = false
 	can_unpause = false
 	is_game_over = true
+	music_controller.stopCurrentSound()
 	_play_scene(1)
 	emit_signal("game_pause")
 

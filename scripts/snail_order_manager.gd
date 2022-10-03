@@ -19,13 +19,14 @@ signal play_tutorial
 
 var valid_spawn_positions: PoolVector2Array = []
 var next_spawn_pos: Vector2
-var snail_order = [normal_snail, normal_snail, normal_snail]
+var snail_order = [normal_snail, speedy_snail, big_snail, rebel_snail]
 var tutorial_snail_order = [
 	normal_snail, normal_snail, normal_snail, normal_snail, normal_snail, 
 	speedy_snail, normal_snail, normal_snail, speedy_snail, normal_snail,
 	normal_snail, big_snail, normal_snail, speedy_snail, big_snail,
 	normal_snail, normal_snail, rebel_snail, normal_snail, speedy_snail
 ]
+
 var speedy_not_seen = true
 var big_not_seen = true
 var rebel_not_seen = true

@@ -102,7 +102,6 @@ func display_text(id, text):
 	tween.start()
 	dialogue_sound_player.playTrack(id) # Stop current dialogue track and play the one for this text
 	
-	yield(tween, "tween_all_completed")
 	next_button.visible = true
 	next_button.disabled = false
 	if current_dialogue.size() <= 1 and not game_state_manager.game_not_won and not game_state_manager.is_game_over:

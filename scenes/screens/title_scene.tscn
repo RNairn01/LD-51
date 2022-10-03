@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/sprites/title_screen/layer_3.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/title_screen/layer_4.png" type="Texture" id=2]
@@ -16,8 +16,9 @@
 [ext_resource path="res://assets/sprites/title_screen/box_ticked.png" type="Texture" id=14]
 [ext_resource path="res://assets/fonts/ui_font_menu_small.tres" type="DynamicFont" id=15]
 [ext_resource path="res://scripts/title_scene.gd" type="Script" id=16]
-[ext_resource path="res://assets/music/Normal Theme.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/music/MainTheme.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/sfx/click.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/sfx/explosion.ogg" type="AudioStream" id=19]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -473,6 +474,7 @@ texture = ExtResource( 2 )
 position = Vector2( 5.63332, -87.2121 )
 rotation = 0.228638
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="Layer3" type="Sprite" parent="Layer6"]
@@ -567,9 +569,20 @@ autoplay = "title_fade_in"
 anims/RESET = SubResource( 4 )
 anims/title_fade_in = SubResource( 5 )
 
-[node name="NormalThemePlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainThemePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 autoplay = true
 
 [node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+volume_db = -10.0
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+wait_time = 4.7
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ExplosionTimer" to="ExplosionPlayer" method="play"]

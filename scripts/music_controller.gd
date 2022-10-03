@@ -9,7 +9,7 @@ onready var currently_playing = null;
 onready var normal_theme_player = $NormalThemePlayer
 onready var speed_theme_player = $SpeedyThemePlayer
 onready var big_theme_player = $BigThemePlayer
-onready var rebel_theme_player = $RebelThemePlayer
+onready var rebel_theme_player = $FullThemePlayer
 onready var sounds_by_key = {
 	"normal_theme": get_node("./NormalThemePlayer"),
 	"speedy_theme": get_node("./SpeedyThemePlayer"),

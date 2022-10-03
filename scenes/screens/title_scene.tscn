@@ -474,7 +474,7 @@ texture = ExtResource( 2 )
 position = Vector2( 5.63332, -87.2121 )
 rotation = 0.228638
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Layer3" type="Sprite" parent="Layer6"]

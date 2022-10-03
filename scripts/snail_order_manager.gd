@@ -11,6 +11,7 @@ onready var landing_indicator = $LandingIndicator
 onready var animation_player = $AnimationPlayer
 onready var game_parent = get_node("/root/Node2D")
 onready var music_controller = get_node("/root/Node2D/MusicController")
+onready var sfx_controller = get_node("/root/Node2D/SfxController")
 
 var rng = RandomNumberGenerator.new()
 
@@ -64,6 +65,7 @@ func _on_timeout():
 	game_state_manager.increase_score()
 
 	#Set up next snail
+	sfx_controller.play_sound("hiss")
 	next = snail_order.pop_front().instance()
 	animation_player.play("fade_in")
 	next_spawn_pos = get_next_spawn_pos()

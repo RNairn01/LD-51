@@ -77,4 +77,8 @@ func start_endless_mode():
 func high_score_screen():
 	scene_manager.final_score = self.current_score
 	scene_manager._load_high_score_scene()
+	
+func is_tutorial():
+	return is_tutorial
+	
 

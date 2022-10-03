@@ -19,12 +19,12 @@ signal play_tutorial
 
 var valid_spawn_positions: PoolVector2Array = []
 var next_spawn_pos: Vector2
-var snail_order = [normal_snail, speedy_snail, big_snail, rebel_snail]
+var snail_order = [normal_snail, normal_snail, normal_snail]
 var tutorial_snail_order = [
-	normal_snail, normal_snail, normal_snail, normal_snail, normal_snail, 
-	speedy_snail, normal_snail, normal_snail, speedy_snail, normal_snail,
-	normal_snail, big_snail, normal_snail, speedy_snail, big_snail,
-	normal_snail, normal_snail, rebel_snail, normal_snail, speedy_snail
+	normal_snail, normal_snail, normal_snail, speedy_snail, normal_snail,
+	normal_snail, big_snail, normal_snail, speedy_snail, normal_snail,
+	normal_snail, normal_snail, normal_snail, big_snail, normal_snail,
+	normal_snail, speedy_snail, rebel_snail, normal_snail, big_snail
 ]
 
 var speedy_not_seen = true
@@ -46,8 +46,8 @@ func _ready():
 	landing_indicator.position = next_spawn_pos
 	landing_indicator.visible = true
 
-	#Will update this when we add no tutorial option
-	# snail_order = tutorial_snail_order.duplicate(true)
+	if game_state_manager.is_tutorial():
+		snail_order = tutorial_snail_order.duplicate(true)
 	if snail_order.size() < 5:
 		generate_more_snails()
 

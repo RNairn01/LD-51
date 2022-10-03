@@ -5,6 +5,8 @@ var target_position = null
 
 onready var timer = get_node("/root/Node2D/GlobalTimer")
 onready var arrow_place_manager = get_node("/root/Node2D/ArrowPlaceManager")
+onready var game_state_manager = get_node("/root/Node2D/GameStateManager")
+onready var snail_sprite = $SnailSprite
 onready var tween = $Tween
 onready var sprite = $SnailSprite
 
@@ -16,11 +18,19 @@ export var snail_direction: Vector2 = Vector2.RIGHT
 
 
 func _ready():
+	game_state_manager.connect("game_pause", self, "_on_pause")
+	game_state_manager.connect("game_unpause", self, "_on_unpause")
 	timer.connect("timeout", self, "_on_tick")
 	# This could be done in the editor but I think it's more descriptive in code.
 	self.connect("area_entered", self, "_on_collide")
 	self.connect("mouse_entered", arrow_place_manager, "_mouse_enter_unplacable_area")
 	self.connect("mouse_exited", arrow_place_manager, "_mouse_leave_unplacable_area")
+
+func _on_pause():
+	snail_sprite.playing = false
+
+func _on_unpause():
+	snail_sprite.playing = true
 
 func _on_tick():
 	var move_target = position + snail_speed * snail_direction * tile_size
